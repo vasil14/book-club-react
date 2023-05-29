@@ -6,7 +6,6 @@ const Home = () => {
   return (
     <Container>
         <NavbarComponent/>
-      <div>Book Club</div>
     </Container>
   );
 };
