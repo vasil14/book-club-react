@@ -1,9 +1,18 @@
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { NavContent, NavbarStyled } from "./styles/Navbar.styled";
 import { navLinksConstant } from "../assets/constants";
-
+import { useState } from "react";
+import Account from "./Account";
+import Sidebar from "./User/Sidebar";
 
 const NavbarComponent = () => {
+
+  const [open, setOpen] = useState();
+  
+  const toggleSidebar = () => {
+    setOpen((previousState) => !previousState);
+  }
+
   return (
     <NavbarStyled>
       <NavContent>
@@ -17,10 +26,10 @@ const NavbarComponent = () => {
             </Link>
           );
         })}
-        <input type="search" />  
-        <Link to={"/login"}>Login</Link>      
-        <Link to={"/register"}>Register</Link>      
+        <input type="search" placeholder="Search for books..." />
+        <Account toggleSidebar={toggleSidebar}/>
       </NavContent>
+      <Sidebar toggleSidebar={toggleSidebar} open={open}/>
     </NavbarStyled>
   );
 };
