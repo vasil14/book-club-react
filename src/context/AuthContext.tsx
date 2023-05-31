@@ -1,10 +1,14 @@
-import { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import axios from "../api/axios";
 import { useNavigate } from "react-router-dom";
 
+interface Props {
+  children: React.ReactNode
+}
+
 const AuthContext = createContext({});
 
-export const AuthProvider = ({ children }: any) => {
+export const AuthProvider = ({ children }: Props) => {
   const navigate = useNavigate();
   const csrf = () => axios.get("/sanctum/csrf-cookie");
 

@@ -7,7 +7,7 @@ import Sidebar from "./User/Sidebar";
 
 const NavbarComponent = () => {
 
-  const [open, setOpen] = useState();
+  const [open, setOpen] = useState(false);
   
   const toggleSidebar = () => {
     setOpen((previousState) => !previousState);

@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const SidebarContainer = styled.div`
   position: fixed;
   top: 0;
-  /* right: -400px; */
   right: ${({ open }) => (open ? '0' : '-400px')};
   width: 400px;
   height: 100vh;

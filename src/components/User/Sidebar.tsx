@@ -6,7 +6,12 @@ import {
 import { ButtonStyled } from "../styles/Button.styled";
 import { User, X } from "phosphor-react";
 
-const Sidebar = ({ open,toggleSidebar }) => {
+interface Props {
+  open: boolean;
+  toggleSidebar: ()=>void
+}
+
+const Sidebar = ({ open,toggleSidebar }: Props) => {
   return (
     <SidebarContainer open={open}>
         <SidebarHeader>
