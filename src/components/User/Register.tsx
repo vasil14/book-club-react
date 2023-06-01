@@ -1,5 +1,5 @@
 import useAuthContext from "../../context/AuthContext";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { ButtonStyled } from "../styles/Button.styled";
 import {
@@ -18,7 +18,7 @@ const Register = () => {
 
   const { register, errors }: any = useAuthContext();
 
-  const handleRegister = async (e: any) => {
+  const handleRegister = async (e: FormEvent) => {
     e.preventDefault();
     register({ name, email, password, password_confirmation });
   };

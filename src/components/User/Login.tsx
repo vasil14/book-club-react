@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import { ButtonStyled } from "../styles/Button.styled";
 import {
   FormContainer,
@@ -13,11 +13,11 @@ import { Link } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, errors }: any  = useAuthContext();
+  const { login, errors } = useAuthContext();
 
-  const handleLogin = async (e: any) => {
+  const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
-    login({ email, password });
+    login(email, password);
   };
 
   return (
