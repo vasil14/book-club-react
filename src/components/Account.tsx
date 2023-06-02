@@ -1,6 +1,6 @@
 import { User } from "phosphor-react";
 
-const Account = ({toggleSidebar}) => {
+const Account = ({toggleSidebar}: any) => {
     return <div onClick={toggleSidebar}>
         <User size={32} />
     </div>;

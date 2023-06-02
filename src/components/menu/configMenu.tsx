@@ -2,7 +2,7 @@ import { CaretDown } from "phosphor-react";
 
 const Caret: any = <CaretDown size={15} weight="bold"/>
 
-export const config: any = [
+export const configMenu: any = [
   {
     key: 1,
     label: 'Category',

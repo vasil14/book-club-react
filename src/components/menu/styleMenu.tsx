@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const Style = styled.div`
+export const StyleMenu = styled.div`
 display: flex;
-justify-content: center;
+width: 100%;
 .ant-menu-submenu-title{
   display: flex;
   flex-direction: row-reverse;
@@ -15,4 +15,6 @@ justify-content: center;
 .ant-menu{
   border: none;
 }
+
+
 `
