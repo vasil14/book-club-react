@@ -14,7 +14,8 @@ export const AuthProvider = ({ children }: Props) => {
 
   const [user, setUser] = useState(null);
   const [errors, setErrors] = useState([]);
-
+  console.log(user);
+  
   const getUser = async () => {
     const { data } = await axios.get("/api/user");
     setUser(data);

@@ -17,7 +17,7 @@ const Menu = () => {
     <StyledContainer border={'solid 1px grey'}>
       <Row
         gutter={[8, 8]}
-        style={{ maxWidth: "1440px", margin: "auto", padding: "0 40px" }}
+        style={{ maxWidth: "1440px", marginInline: "auto", padding: "0 40px" }}
         align={"middle"}
       >
         <Col>

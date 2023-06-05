@@ -3,7 +3,7 @@ import useAuthContext from "../context/AuthContext";
 const Home = () => {
   const {user}: any = useAuthContext();
   
-  return <>{user?.name}sdfsdf</>;
+  return <>Welcome, {user?.name}</>;
 };
 
 export default Home;

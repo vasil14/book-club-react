@@ -1,6 +1,6 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 
-import Login from "./components/User/Login";
+import Login from "./containers/login/Login";
 import Register from "./containers/register/registerForm";
 import Home from "./containers/Home";
 import Menu from "./components/menu/indexMenu";

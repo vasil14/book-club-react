@@ -26,12 +26,12 @@ const Sidebar = ({ open, toggleSidebar }: Props) => {
         </div>
       </SidebarHeader>
       <SidebarContent>
-        <ButtonStyled>
-          <Link to={"/login"}>Login</Link>
-        </ButtonStyled>
-        <ButtonStyled>
-          <Link to={"/register"}>Register</Link>
-        </ButtonStyled>
+        <Link to={"/login"}>
+          <ButtonStyled>Login</ButtonStyled>
+        </Link>
+        <Link to={"/register"}>
+          <ButtonStyled>Register</ButtonStyled>
+        </Link>
       </SidebarContent>
     </SidebarContainer>
   );
