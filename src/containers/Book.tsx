@@ -16,14 +16,14 @@ const Book = () => {
   }, [])
   
   return (
-    <div style={{maxWidth:'1440px', marginInline: 'auto'}}>
+    <div style={{maxWidth:'1440px', marginInline: 'auto', paddingTop:'50px'}}>
         <Row>
             <Col span={18} style={{display:'flex', gap:'40px'}}>
                 <div>
                     <img src={book?.cover} alt={book?.title + 'cover'} />
                 </div>
-                <div style={{display:'flex', flexDirection:'column', gap:'10px'}}>
-                    <div>{book?.title}</div>
+                <div style={{display:'flex', flexDirection:'column', gap:'10px',paddingRight:'50px', alignContent:'center'}}>
+                    <div style={{fontSize:'24px', fontWeight:'bold'}}>{book?.title}</div>
                     <div>{book?.author}</div>
                     <div>{book?.description}</div>
                 </div>
