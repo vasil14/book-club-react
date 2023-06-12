@@ -10,7 +10,7 @@ export const configMenu: any = [
     children: [
       {
         key: 2,
-        label: 'Romance',
+        label: 'Fiction',
       },
       {
         key: 3,
