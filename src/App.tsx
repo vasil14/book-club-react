@@ -5,6 +5,7 @@ import Register from "./containers/register/registerForm";
 import Home from "./containers/Home";
 import Menu from "./components/menu/indexMenu";
 import Book from "./containers/Book";
+import CategoryBooks from "./containers/CategoryBooks";
 
 const App = () => {
   const location = useLocation();
@@ -22,7 +23,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/book/:slug" element={<Book />} />
-        <Route path="/books/:category" element={<Book />} />
+        <Route path="/books/:category" element={<CategoryBooks />} />
       </Routes>
     </>
   );

@@ -1,6 +1,9 @@
 import { CaretDown } from "phosphor-react";
+import { Link } from "react-router-dom";
 
 const Caret: any = <CaretDown size={15} weight="bold"/>
+
+const Fiction = <Link to={'/books/fiction'}>Fiction</Link>
 
 export const configMenu: any = [
   {
@@ -10,7 +13,7 @@ export const configMenu: any = [
     children: [
       {
         key: 2,
-        label: 'Fiction',
+        label: Fiction
       },
       {
         key: 3,

@@ -5,6 +5,7 @@ import { StyleMenu } from "./styleMenu";
 import { StyledContainer } from "../styledContent";
 import Account from "../Account";
 import Sidebar from "../Sidebar";
+import { Link } from "react-router-dom";
 
 const Menu = () => {
   const [open, setOpen] = useState(false);
@@ -21,11 +22,13 @@ const Menu = () => {
         align={"middle"}
       >
         <Col>
-          <img
-            src="/bookclub-logo.png"
-            alt="bookclub_logo"
-            style={{ height: "50px" }}
-          />
+          <Link to={'/'}>
+            <img
+              src="/bookclub-logo.png"
+              alt="bookclub_logo"
+              style={{ height: "50px" }}
+            />
+          </Link>
         </Col>
         <Col flex={"auto"}>
           <StyleMenu>
