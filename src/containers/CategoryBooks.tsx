@@ -3,8 +3,21 @@ import { Link, useParams } from "react-router-dom";
 import useBookContext from "../context/BookContext";
 import { Row, Col } from "antd";
 
+
+interface Book {
+  id: number;
+  title: string;
+  slug: string;
+  cover: string;
+}
+
+interface ContextProps {
+  getBookByCategory: (category: string) => void,
+  booksCategory: Book[]
+}
+
 const CategoryBooks = () => {
-  const { getBookByCategory, booksCategory }: any = useBookContext();
+  const { getBookByCategory, booksCategory }: ContextProps = useBookContext();
   const { category } = useParams();
 
   console.log(booksCategory[0]?.title);

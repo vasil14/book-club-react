@@ -6,14 +6,24 @@ interface Props {
   children: React.ReactNode
 }
 
+interface UserProps {
+  id: number | null,
+  name: string | null,
+  email: string | null
+}
+
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }: Props) => {
   const navigate = useNavigate();
   const csrf = () => axios.get("/sanctum/csrf-cookie");
 
-  const [user, setUser] = useState(null);
-  const [errors, setErrors] = useState([]);
+  const [user, setUser] = useState<UserProps>({
+    id: 0,
+    name: '',
+    email: '',
+  });
+  const [errors, setErrors] = useState({});
   console.log(user);
   
   const getUser = async () => {
@@ -49,7 +59,7 @@ export const AuthProvider = ({ children }: Props) => {
 
   const logout = () => {
     axios.post("/logout").then(() => {
-      setUser(null);
+      setUser({});
     });
   };
 

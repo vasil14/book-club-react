@@ -1,17 +1,33 @@
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import useAuthContext from "../../context/AuthContext";
 import { Link } from "react-router-dom";
-import { ErrorMessage, FormContainer, FormStyled, LogoImg, Row } from "../../components/User/AuthFormStyled";
+import {
+  ErrorMessage,
+  FormContainer,
+  FormStyled,
+  LogoImg,
+  Row,
+} from "../../components/User/AuthFormStyled";
 import { ButtonStyled } from "../../components/ButtonStyled";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [loginInfo, setLoginInfo] = useState({
+    email: "",
+    password: "",
+  });
   const { login, errors }: any = useAuthContext();
 
-  const handleLogin = async (e: React.SyntheticEvent) => {
+  const handleLoginData = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setLoginInfo({
+      ...loginInfo,
+      [e.target.name]: value,
+    });
+  };
+
+  const handleLoginSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    login({email, password});
+    login(loginInfo);
   };
 
   return (
@@ -19,14 +35,15 @@ const Login = () => {
       <Link to={"/"}>
         <LogoImg src="/bookclub-logo.png" alt="logo" />
       </Link>
-      <FormStyled action="POST" onSubmit={handleLogin}>
+      <FormStyled action="POST" onSubmit={handleLoginSubmit}>
         <Row>
           <label htmlFor="email">Email</label>
           <input
             type="email"
             placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={loginInfo.email}
+            name="email"
+            onChange={handleLoginData}
           />
           {errors?.email && <ErrorMessage>{errors.email}</ErrorMessage>}
         </Row>
@@ -35,8 +52,9 @@ const Login = () => {
           <input
             type="password"
             placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={loginInfo.password}
+            name="password"
+            onChange={handleLoginData}
           />
           {errors?.password && <ErrorMessage>{errors.password}</ErrorMessage>}
         </Row>
