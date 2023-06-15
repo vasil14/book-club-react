@@ -1,15 +1,16 @@
 import React, { createContext, useContext, useState } from "react";
 import axios from "../api/axios";
 import { useNavigate } from "react-router-dom";
+import { AxiosError, AxiosResponse } from "axios";
 
 interface Props {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 interface UserProps {
-  id: number | null,
-  name: string | null,
-  email: string | null
+  id: number | null;
+  name: string | null;
+  email: string | null;
 }
 
 const AuthContext = createContext({});
@@ -19,13 +20,13 @@ export const AuthProvider = ({ children }: Props) => {
   const csrf = () => axios.get("/sanctum/csrf-cookie");
 
   const [user, setUser] = useState<UserProps>({
-    id: 0,
-    name: '',
-    email: '',
+    id: null,
+    name: "",
+    email: "",
   });
-  const [errors, setErrors] = useState({});
-  console.log(user);
-  
+
+  const [errors, setErrors] = useState<AxiosResponse | null | void>(null);
+
   const getUser = async () => {
     const { data } = await axios.get("/api/user");
     setUser(data);
@@ -37,9 +38,10 @@ export const AuthProvider = ({ children }: Props) => {
       await axios.post("/login", data);
       await getUser();
       navigate("/");
-    } catch (error: any) {
-      if (error.response.status === 422) {
-        setErrors(error.response.data.errors);
+    } catch (error) {
+      const err = error as AxiosError;
+      if (err.response?.status === 422) {
+        setErrors(err?.response);
       }
     }
   };
@@ -59,7 +61,11 @@ export const AuthProvider = ({ children }: Props) => {
 
   const logout = () => {
     axios.post("/logout").then(() => {
-      setUser({});
+      setUser({
+        id: null,
+        name: "",
+        email: "",
+      });
     });
   };
 
