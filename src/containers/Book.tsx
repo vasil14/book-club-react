@@ -8,7 +8,7 @@ const Book = () => {
   const {getBook, book}: any = useBookContext();
   const {slug} = useParams();
 
-  console.log(book?.id);
+  console.log(book);
   
   
   useEffect(() => {
@@ -20,7 +20,7 @@ const Book = () => {
         <Row>
             <Col span={18} style={{display:'flex', gap:'40px'}}>
                 <div>
-                    <img src={book?.cover} alt={book?.title + 'cover'} />
+                    {book.covers && <img src={book?.covers[0]?.url} alt={book?.title + 'cover'} />}
                 </div>
                 <div style={{display:'flex', flexDirection:'column', gap:'10px',paddingRight:'50px', alignContent:'center'}}>
                     <div style={{fontSize:'24px', fontWeight:'bold'}}>{book?.title}</div>
