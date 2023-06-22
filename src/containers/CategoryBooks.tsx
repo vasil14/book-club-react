@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import useBookContext from "../context/BookContext";
 import { Row, Col } from "antd";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 interface Book {
   id: number;
@@ -12,15 +13,13 @@ interface Book {
 }
 
 interface ContextProps {
-  getBookByCategory: (category: string) => void,
-  booksCategory: Book[]
+  getBookByCategory: (category?: string) => void;
+  booksCategory: Book[];
 }
 
 const CategoryBooks = () => {
   const { getBookByCategory, booksCategory }: ContextProps = useBookContext();
   const { category } = useParams();
-
-  console.log(booksCategory[0]?.title);
 
   useEffect(() => {
     getBookByCategory(category);
@@ -44,9 +43,20 @@ const CategoryBooks = () => {
               }}
             >
               <h3>{book?.title}</h3>
-              <Link to={`/book/${book?.slug}`}>
-                <img src={book?.cover} alt="" style={{ maxWidth: "250px", width:'100%', height:'100%',objectFit:'contain' }} />
-              </Link>
+              <Swiper 
+                navigation={true}
+                style={{width: '100%'}}
+              >
+                {book?.covers?.map((img: any) => {
+                  return (
+                    <SwiperSlide key={img?.url}>
+                      <Link  to={`/book/${book?.slug}`}>
+                        <img src={img?.url} alt="" />
+                      </Link>
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
             </Col>
           );
         })}

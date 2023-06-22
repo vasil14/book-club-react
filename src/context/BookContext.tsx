@@ -14,10 +14,8 @@ export const BookProvider = ({ children }: Props) => {
   const getBook = async (slug: string) => {
     try {
       const response = await axios.get(`/api/book/${slug}`);
-      // console.log(response);
       setBook(response.data);
     } catch (error: any) {
-      console.log(error);
     }
   };
 
